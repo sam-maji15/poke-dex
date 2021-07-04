@@ -29,7 +29,19 @@ function getRandomColor() {
   return randColors[Math.floor(Math.random()*randColors.length)]
 }
 
+
+
+
+/* Capitalizes the first letter */
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+
 export { 
   getDefTheme, // default theme
   getRandomColor, // random colors
+  
+  
+  capitalize, // capitalizes first letter
 }
