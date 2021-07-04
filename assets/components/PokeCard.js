@@ -1,14 +1,10 @@
 import React from 'react'
-//import Theme from '../../tools.js'
+import { getRandomColor } from '../../tools.js'
 
 export default function PokeCard(prop) {
   
-  
-  //let st = Theme.getRandomColor()
-  //console.log(st)
-  
   return (
-  <div className='poke-card-con'>
+  <div style={{ background: getRandomColor() }} className='poke-card-con'>
     <img src={prop.pokeDat.imgSrc} className='poke-card-img'/>
     
     <div>
