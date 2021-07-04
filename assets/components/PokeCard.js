@@ -1,5 +1,8 @@
 import React from 'react'
-import { getRandomColor } from '../../tools.js'
+import { 
+  getRandomColor,
+  capitalize
+} from '../../tools.js'
 
 export default function PokeCard(prop) {
   
@@ -8,7 +11,7 @@ export default function PokeCard(prop) {
     <img src={prop.pokeDat.imgSrc} className='poke-card-img'/>
     
     <div>
-    <h2>{prop.pokeDat.name}</h2>
+    <h2>{capitalize(prop.pokeDat.name)}</h2>
     <h2><b>Height:</b> {prop.pokeDat.height}m</h2>
     <h2><b>Weight:</b> {prop.pokeDat.weight}kg</h2>
     <h2><b>Type(s):</b> {prop.pokeDat.type}</h2>
