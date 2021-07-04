@@ -4,31 +4,32 @@ export default class Tools {
   }
 }
 
-export const defTheme = {
-  colPri: '#FCE38A',
-  colPriVar: '#F38181',
-  colSec: '#EAFFD0',
-  solSecVar: '#95E1D3'
+function getDefTheme() {
+  const defTheme = {
+    colPri: '#FCE38A',
+    colPriVar: '#F38181',
+    colSec: '#EAFFD0',
+    colSecVar: '#95E1D3'
+  }
+  return defTheme
 }
 
-/*export const randColors = [
-  '#E99497', // faded redish
-  '#F3C583', // brownish yellow
-  '#E8E46E', // light green
-  '#B3E283' // green
-  ]
-  */
-  
-// export let randColors = ['apple', 'banana']
 
-class Theme {
-  constructor() {
-    
-  }
+/* returns a random color */
+function getRandomColor() {
   
-  static getRandomColor() {
-    return '#ffffff'
-  }
+  // random colors array
+  const randColors = [
+    '#E99497', // faded redish
+    '#F3C583', // brownish yellow
+    '#E8E46E', // light green
+    '#B3E283' // green
+    ]
+  
+  return randColors[Math.floor(Math.random()*randColors.length)]
 }
 
-export {  }
+export { 
+  getDefTheme, // default theme
+  getRandomColor, // random colors
+}

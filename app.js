@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
 import SearchBar from './assets/components/SearchBar.js'
 import PokeCard from './assets/components/PokeCard.js'
 
@@ -9,12 +8,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      dat: '',
       pokeDat: {
         name: '', height: 0, weight: 0, type: '', imgSrc: ''},
-        
     }
-    //this.btnClick = this.btnClick.bind(this)
   }
   
   componentDidMount() {
@@ -31,6 +27,15 @@ class App extends Component {
       }
     })
     
+    // retrieving search-data from local storage
+    let last_search = localStorage.getItem('last-search')
+    
+    if (typeof last_search !== 'null') {
+      // reloading last search
+      document.querySelector('.inp-search-bar').value = last_search
+      document.querySelector('.btn-search').click()
+      document.querySelector('.inp-search-bar').value = ''
+    }
   }
   
   // onclick function for search button
@@ -43,7 +48,6 @@ class App extends Component {
       return response.json()
     }).then(data => {
       let poke_dat = `ht: ${data.height}m\nwt: ${data.weight}kg`
-      this.setState({dat: poke_dat})
       this.setState({pokeDat: {
         name: pokeName,
         height: data.height,
@@ -52,6 +56,10 @@ class App extends Component {
         imgSrc: data.sprites.other['official-artwork'].front_default
       }})
     })
+    
+    //saving last data
+    localStorage.setItem('last-search', pokeName)
+    
   }
   
   render() {
